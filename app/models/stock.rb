@@ -19,5 +19,17 @@ class Stock < ApplicationRecord
     where(ticker: ticker_symbol).first
   end
 
+  def refresh_price
+    starting = Time.now
+    client = IEX::Api::Client.new(
+        publishable_token: Rails.application.credentials.iex_client[:sandbox_api_key],
+                           secret_token: 'secret_token',
+                           endpoint: 'https://sandbox.iexapis.com/v1')
+    client_created = Time.now
+    update(last_price: client.price(ticker))
+    ending = Time.now
+    puts "Took #{client_created-starting} ms to create client and #{ending-client_created} ms to update the price"
+  end
+
 
 end
