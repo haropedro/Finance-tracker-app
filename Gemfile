@@ -26,6 +26,9 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'iex-ruby-client'
 gem "font-awesome-rails"
 gem 'awesome_print'
+gem 'jquery-rails'
+gem 'twitter-bootstrap-rails'
+gem 'stock_quote'
 
 
 # Use Active Storage variant
